@@ -237,7 +237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPosition: {x: 0, y: 0}
   iterations: 1
-  walkLength: 10
+  walkLength: 100
   startRandomlyEachIteration: 1
   tilemapVisualizer: {fileID: 2012426920}
 --- !u!4 &737932992
@@ -555,7 +555,7 @@ Grid:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1628668919}
   m_Enabled: 1
-  m_CellSize: {x: 1, y: 1, z: 0}
+  m_CellSize: {x: 0.16, y: 0.16, z: 0}
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
@@ -873,7 +873,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floorTilemap: {fileID: 1691665454}
-  floorTile: {fileID: 0}
+  floorTile: {fileID: 11400000, guid: ac67d9c016e17416abe204fc1377806a, type: 2}
 --- !u!4 &2012426921
 Transform:
   m_ObjectHideFlags: 0
