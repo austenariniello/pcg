@@ -873,7 +873,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floorTilemap: {fileID: 1691665454}
-  floorTile: {fileID: 11400000, guid: ac67d9c016e17416abe204fc1377806a, type: 2}
+  floorTile:
+  - {fileID: 11400000, guid: e5a77d42f1ffd41d7b065c6b0b6b6da3, type: 2}
+  - {fileID: 11400000, guid: f534041c0e77e4ed6b0dbaa301008813, type: 2}
+  - {fileID: 11400000, guid: 6496c3b9d9a084adcafd90481863e11c, type: 2}
+  - {fileID: 11400000, guid: 6706409aa5e7f43c1811bcd762a4fefb, type: 2}
+  - {fileID: 11400000, guid: 94e89dfed6adc437d857ac59008404a4, type: 2}
+  - {fileID: 11400000, guid: 1126d135027944ff696a92afb8db11bf, type: 2}
+  - {fileID: 11400000, guid: 845058394b87b40b4881f7c3fdefa171, type: 2}
+  - {fileID: 11400000, guid: fa2f87deb207b429d8a4c91fe73879d9, type: 2}
 --- !u!4 &2012426921
 Transform:
   m_ObjectHideFlags: 0

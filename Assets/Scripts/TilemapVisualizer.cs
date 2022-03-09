@@ -10,18 +10,19 @@ public class TilemapVisualizer : MonoBehaviour
     private Tilemap floorTilemap;
 
     [SerializeField]
-    private TileBase floorTile;
+    private TileBase[] floorTile;
 
     public void PaintFloorTiles(IEnumerable<Vector2Int> floorPositions)
     {
         PaintTiles(floorPositions, floorTilemap, floorTile);
     }
 
-    private void PaintTiles(IEnumerable<Vector2Int> positions, Tilemap tilemap, TileBase tile)
+    private void PaintTiles(IEnumerable<Vector2Int> positions, Tilemap tilemap, TileBase[] tile)
     {
         foreach (var position in positions)
         {
-            PaintSingleTile(tilemap, tile, position);
+            int i = UnityEngine.Random.Range(0, tile.Length);
+            PaintSingleTile(tilemap, tile[i], position);
         }
     }
 
