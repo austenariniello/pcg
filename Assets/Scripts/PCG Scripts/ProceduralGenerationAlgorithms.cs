@@ -91,7 +91,7 @@ public static class ProceduralGenerationAlgorithms
     {
         var xSplit = Random.Range(1, room.size.x);  // find a point in between 1 and room width to split across
         
-        BoundsInt room1 = new BoundsInt(room.min, new Vector3Int(xSplit, room.min.y, room.min.z));  // first room has same min point and height as original room, width is the position chosen to split the rooms at
+        BoundsInt room1 = new BoundsInt(room.min, new Vector3Int(xSplit, room.size.y, room.size.z));  // first room has same min point and height as original room, width is the position chosen to split the rooms at
         BoundsInt room2 = new BoundsInt(new Vector3Int(room.min.x + xSplit, room.min.y, room.min.z), // second room has same height as original room, min point is now min point of og + xSplit and width is og room width - xSplit point
             new Vector3Int(room.size.x - xSplit, room.size.y, room.size.z));  
 
