@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public abstract class AbstractDungeonGenerator : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    protected TilemapVisualizer tilemapVisualizer = null;
+    [SerializeField]
+    protected Vector2Int startPosition = Vector2Int.zero;
+
+    public void GenerateDungeon()
     {
-        
+        tilemapVisualizer.Clear();
+        RunProceduralGeneration();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    protected abstract void RunProceduralGeneration();
 }
