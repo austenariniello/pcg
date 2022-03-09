@@ -110,6 +110,24 @@ public static class ProceduralGenerationAlgorithms
         roomsQueue.Enqueue(room1);
         roomsQueue.Enqueue(room2);
     }
+
+    // will make a corridor in a single direction for a specified distance
+    public static List<Vector2Int> RandomWalkCorridor(Vector2Int startPosition, int corridorLength)
+    {   // List over Hashset bc it won't have any dupes and we want to know last position
+        
+        List<Vector2Int> corridor = new List<Vector2Int>();
+        var direction = Direction2D.GetRandomCardinalDirection();
+        var currentPosition = startPosition;
+        corridor.Add(currentPosition);
+
+        for (int i = 0; i < corridorLength; i++)
+        {
+            currentPosition += direction;
+            corridor.Add(currentPosition);
+        }
+
+        return corridor;
+    }
 }
 
 public static class Direction2D
