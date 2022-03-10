@@ -18,6 +18,8 @@ public class RoomGenerator : RandomWalkGenerator
     [SerializeField]
     private bool randomWalkRooms = false;
 
+    public GameObject player;
+
     protected override void RunProceduralGeneration()
     {
         CreateRooms();
@@ -25,6 +27,12 @@ public class RoomGenerator : RandomWalkGenerator
 
     private void CreateRooms()
     {
+        GameObject oldPlayer = GameObject.FindWithTag("Player");
+
+        if (oldPlayer) {
+            Destroy(oldPlayer);
+        }
+
         var roomList = ProceduralGenerationAlgorithms.BinarySpacePartitioning(new BoundsInt((Vector3Int)startPosition, new Vector3Int(dungeonWidth, dungeonHeight, 0)), minRoomWidth, minRoomHeight);
 
         HashSet<Vector2Int> floor = new HashSet<Vector2Int>();
@@ -44,11 +52,18 @@ public class RoomGenerator : RandomWalkGenerator
             roomCenters.Add((Vector2Int)Vector3Int.RoundToInt(room.center));    // gets center of room, converts from vec3int to vec2int
         }
 
+        Instantiate(player, new Vector3(roomCenters[0].x, roomCenters[0].y, 0.0f), Quaternion.identity);
+
         HashSet<Vector2Int> corridors = ConnectRooms(roomCenters);
         floor.UnionWith(corridors);
 
         tilemapVisualizer.PaintFloorTiles(floor);
         WallGenerator.CreateWalls(floor, tilemapVisualizer);
+
+        print("finishing creation");
+
+        print(roomCenters.Count);
+        
     }
 
     private HashSet<Vector2Int> CreateRoomsRandomly(List<BoundsInt> roomList)
