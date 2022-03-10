@@ -31,7 +31,7 @@ public class EnemyScript : MonoBehaviour
                 transform.LookAt(target.position);
 
                 // Correct the rotation
-                transform.Rotate(new Vector3(0, -90, 0), Space.Self);
+                // transform.Rotate(new Vector3(0, -90, 0), Space.Self);
                 transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
             }
         }
