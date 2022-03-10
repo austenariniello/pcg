@@ -63,6 +63,10 @@ public class EnemyScript : MonoBehaviour
             if (bottom) GetComponent<Rigidbody2D>().AddForce(-transform.up * thrust, ForceMode2D.Impulse);
             Invoke("FalseCollision", 0.5f);
         }
+
+        if (collision.gameObject.CompareTag("Weapon")) {
+            Destroy(gameObject);
+        }
     }
     
     void FalseCollision()
