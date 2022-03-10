@@ -35,8 +35,6 @@ public class EnemyScript : MonoBehaviour
                 // Get the position of the player
                 transform.LookAt(target.position);
 
-                print(target.position);
-
                 // Correct the rotation
                 transform.Rotate(new Vector3(0, -90, 0), Space.Self);
                 transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
