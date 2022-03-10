@@ -19,6 +19,7 @@ public class RoomGenerator : RandomWalkGenerator
     private bool randomWalkRooms = false;
 
     public GameObject player;
+    public GameObject Enemy;
 
     protected override void RunProceduralGeneration()
     {
@@ -28,9 +29,14 @@ public class RoomGenerator : RandomWalkGenerator
     private void CreateRooms()
     {
         GameObject oldPlayer = GameObject.FindWithTag("Player");
+        GameObject oldEnemy = GameObject.FindWithTag("Enemy");
 
         if (oldPlayer) {
             Destroy(oldPlayer);
+        }
+        
+        if (oldEnemy) {
+            Destroy(oldEnemy);
         }
 
         var roomList = ProceduralGenerationAlgorithms.BinarySpacePartitioning(new BoundsInt((Vector3Int)startPosition, new Vector3Int(dungeonWidth, dungeonHeight, 0)), minRoomWidth, minRoomHeight);
@@ -53,6 +59,7 @@ public class RoomGenerator : RandomWalkGenerator
         }
 
         Instantiate(player, new Vector3(roomCenters[0].x, roomCenters[0].y, 0.0f), Quaternion.identity);
+        Instantiate(Enemy, new Vector3(roomCenters[0].x + 2, roomCenters[0].y + 2, 0.0f), Quaternion.identity);
 
         HashSet<Vector2Int> corridors = ConnectRooms(roomCenters);
         floor.UnionWith(corridors);
