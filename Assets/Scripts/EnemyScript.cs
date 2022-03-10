@@ -6,7 +6,7 @@ public class EnemyScript : MonoBehaviour
 {
 
     private float range;
-    public Transform target;
+    private Transform target;
     private float minDistance = 5.0f;
 
     private bool targetCollision = false;
@@ -16,7 +16,7 @@ public class EnemyScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        target = GameObject.Find("PlayerObj").transform;
     }
 
     // Update is called once per frame
@@ -30,8 +30,10 @@ public class EnemyScript : MonoBehaviour
                 // Get the position of the player
                 transform.LookAt(target.position);
 
+                print(target.position);
+
                 // Correct the rotation
-                // transform.Rotate(new Vector3(0, -90, 0), Space.Self);
+                transform.Rotate(new Vector3(0, -90, 0), Space.Self);
                 transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
             }
         }
