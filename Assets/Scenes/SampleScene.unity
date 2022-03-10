@@ -7437,7 +7437,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 737932991}
+      - m_Target: {fileID: 1266412061}
         m_TargetAssemblyTypeName: AbstractDungeonGenerator, Assembly-CSharp
         m_MethodName: GenerateDungeon
         m_Mode: 1
