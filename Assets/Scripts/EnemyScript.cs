@@ -7,7 +7,7 @@ public class EnemyScript : MonoBehaviour
 
     private float range;
     public Transform target;
-    private float minDistance = 100.0f;
+    private float minDistance = 5.0f;
 
     private bool targetCollision = false;
     private float speed = 2.0f;
