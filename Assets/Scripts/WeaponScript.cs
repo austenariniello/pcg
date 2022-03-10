@@ -17,6 +17,7 @@ public class WeaponScript : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player");
+        GetComponent<SpriteRenderer>().enabled = false;
         transform.GetChild(0).gameObject.SetActive(false);
     }
 
@@ -26,7 +27,6 @@ public class WeaponScript : MonoBehaviour
 
         if (!player) {
             player = GameObject.FindWithTag("Player");
-            transform.GetChild(0).gameObject.SetActive(false);
         }
 
         if (Input.GetKeyDown("x"))
@@ -76,12 +76,12 @@ public class WeaponScript : MonoBehaviour
     {
         if(player.GetComponent<PlayerScript>().turnedLeft)
         {
-            transform.localScale = new Vector3(-7f, 7f, 1);
+            transform.localScale = new Vector3(-6f, 6f, 1);
             weaponX = -0.3f;
         }
         else
         {
-            transform.localScale = new Vector3(7f, 7f, 1);
+            transform.localScale = new Vector3(6f, 6f, 1);
             weaponX = 0.3f;
         }
 

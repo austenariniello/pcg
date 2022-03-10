@@ -22,6 +22,7 @@ public class PlayerScript : MonoBehaviour
     void Update()
     {
         
+        transform.localScale = new Vector3(0.4f, 0.6f, 1.0f);
         GetPlayerInput();
         MovePlayer();
 
