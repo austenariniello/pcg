@@ -16,12 +16,17 @@ public class EnemyScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        target = GameObject.Find("PlayerObj").transform;
+        target = GameObject.FindWithTag("Player").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if (!target) {
+            target = GameObject.FindWithTag("Player").transform;
+        }
+
         range = Vector2.Distance(transform.position, target.position);
         if(range < minDistance)
         {

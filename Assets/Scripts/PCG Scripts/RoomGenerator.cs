@@ -18,6 +18,14 @@ public class RoomGenerator : RandomWalkGenerator
     [SerializeField]
     private bool randomWalkRooms = false;
 
+    [SerializeField]
+    [Range(1,5)]
+    private int spawnMax = 3;
+
+    [SerializeField]
+    [Range(0,1)]
+    private int spawnMin = 1;
+
     public GameObject player;
     public GameObject Enemy;
 
@@ -29,13 +37,13 @@ public class RoomGenerator : RandomWalkGenerator
     private void CreateRooms()
     {
         GameObject oldPlayer = GameObject.FindWithTag("Player");
-        GameObject oldEnemy = GameObject.FindWithTag("Enemy");
+        GameObject[] oldEnemies = GameObject.FindGameObjectsWithTag("Enemy");
 
         if (oldPlayer) {
             Destroy(oldPlayer);
         }
         
-        if (oldEnemy) {
+        foreach (var oldEnemy in oldEnemies) {
             Destroy(oldEnemy);
         }
 
@@ -59,15 +67,32 @@ public class RoomGenerator : RandomWalkGenerator
         }
 
         Instantiate(player, new Vector3(roomCenters[0].x, roomCenters[0].y, 0.0f), Quaternion.identity);
-        Instantiate(Enemy, new Vector3(roomCenters[0].x + 2, roomCenters[0].y + 2, 0.0f), Quaternion.identity);
+
+        foreach (var center in roomCenters) {
+            
+            if (center != roomCenters[0]) {
+
+                int enemyAmount = UnityEngine.Random.Range(spawnMin,spawnMax);
+
+                for (int i = 0; i < enemyAmount; i++) {
+
+                    int xOffset = UnityEngine.Random.Range(-3, 3);
+                    int yOffset = UnityEngine.Random.Range(-3, 3);
+
+                    Instantiate(Enemy, new Vector3(center.x + xOffset, center.y + yOffset, 0.0f), Quaternion.identity);
+
+                }
+
+            }
+            
+        }
+        
 
         HashSet<Vector2Int> corridors = ConnectRooms(roomCenters);
         floor.UnionWith(corridors);
 
         tilemapVisualizer.PaintFloorTiles(floor);
         WallGenerator.CreateWalls(floor, tilemapVisualizer);
-
-        print("finishing creation");
 
         print(roomCenters.Count);
         
