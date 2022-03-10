@@ -8,6 +8,7 @@ public class PlayerScript : MonoBehaviour
     private float horizontal;
     private float vertical;
     private float speed = 10.0f;
+    public bool turnedLeft = false;
     Rigidbody2D rb;
 
 
@@ -31,16 +32,20 @@ public class PlayerScript : MonoBehaviour
         vertical = Input.GetAxisRaw("Vertical");
         if (horizontal > 0)
         {
+            turnedLeft = false;
             GetComponent<Animator>().Play("Right");
         } else if (horizontal < 0)
         {
+            turnedLeft = true;
             GetComponent<Animator>().Play("Left");
 
         } else if (vertical > 0)
         {
+            turnedLeft = false;
             GetComponent<Animator>().Play("Up");
         } else if (vertical < 0)
         {
+            turnedLeft = false;
             GetComponent<Animator>().Play("Down");
         }
     }
