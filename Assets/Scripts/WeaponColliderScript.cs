@@ -15,4 +15,14 @@ public class WeaponColliderScript : MonoBehaviour
     {
         
     }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+
+        print("collision");
+
+        if (collision.gameObject.CompareTag("Enemy")) {
+            print("enemy collision");
+            Destroy(collision.gameObject);
+        }
+    }
 }
